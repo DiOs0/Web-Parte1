@@ -1,0 +1,47 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ejemplo 02</title>
+    //Libreria para que sea mas facil trabajar con el dom (jQuery)
+    <br/>
+    <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+
+    <script language="JavaScript">
+        $(document).ready(function(){
+            var text= "mundo!";
+            $('#myButton').click(function(){
+                if(text=="mundo!"){
+                    text= "JQuery";
+                }else{
+                    text= "mundo!";
+                }
+
+                $('#mySpan').html(text);
+                $('#root').append("<p>Nuevo parrafo</p>")
+                $('#root').append("<button>Nuevo boton</button>")
+
+            })
+        })
+
+    </script>
+</head>
+
+<body>
+Hola <span id="mySpan">mundo</span>
+<br/>
+<button id="myButton">Click</button>
+
+
+<br/>
+<br/>
+<br/>
+<div id="root" style="border: 1px solid black">
+    MI ROOT
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Ejemplo 01</title>
+    </head>
+
+    <body>
+        Hola <span id="mySpan">mundo</span>
+        <br/>
+        <button id="myButton">Click</button>
+    <script language="JavaScript">
+        //Todo lo de abajo esta en JS y es en Imperativo, NO ES PORTABLE
+        var text= "mundo!";
+        var span=document.getElementById("mySpan");
+        var button=document.getElementById("myButton");
+
+
+        button.addEventListener("click", function(){
+            if(text=="mundo!"){
+                text= "JavaScript";
+            }else{
+                text= "mundo!";
+            }
+
+            span.innerHTML=text
+        })
+
+    </script>
+    </body>
+</html>
