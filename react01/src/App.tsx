@@ -2,6 +2,8 @@
 import * as React from "react";
 import HolaMundo from "./HolaMundo.tsx";
 import HolaMundo2 from "./HolaMundo2.tsx";
+import HolaMundo3, {type Hello3Props} from "./HolaMundo3.tsx";
+import Contador from "./Contador.tsx";
 
 
 function App() {
@@ -18,6 +20,11 @@ function App() {
     }
   }
 
+  const props :Hello3Props={
+      name:"otro nombre",
+    }
+
+
   return (
       //El fragmento es lo que se va a mostrar en la pantalla
       //Aqui solo se puede poner expresiones
@@ -33,6 +40,9 @@ function App() {
       <h1>Lo de abajo es otro componente</h1>
       <HolaMundo2 name="Diego" edad={22}/>
       <HolaMundo2 name="Carlos" edad={33}/>
+      <HolaMundo3 name="David" age={22} />
+      <HolaMundo3 {...props} />
+      <Contador/>
     </>
   )
 }
