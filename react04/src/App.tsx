@@ -10,13 +10,15 @@ function App() {
       <nav>
         <Link to="/home">Home</Link>
         <br/>
-        <Link to="/contact">Contact</Link>
+        <Link to="/contact/test1">Contact1</Link>
+          <br/>
+          <Link to="/contact/test2">Contact2</Link>
 
       </nav>
 
       <Routes>
         <Route path="/home" element={<Home/>}/>
-        <Route path="/contact" element={<Contact/>}/>
+        <Route path="/contact/:name" element={<Contact/>}/>
       </Routes>
 
     </>
