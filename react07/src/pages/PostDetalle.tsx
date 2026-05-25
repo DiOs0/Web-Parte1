@@ -98,6 +98,10 @@ function PostDetalle() {
                         >
                             Guardar
                         </Button>
+
+                        <Button variant="contained" color="secondary" size="large" component={Link} to={`/posts/${post.id}/comments`} sx={{margin: "20px auto"}}>
+                            Ver comentarios
+                        </Button>
                     </CardActions>
 
 

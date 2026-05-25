@@ -22,13 +22,11 @@ function Posts() {
 
     };
 
-    useEffect(()=>{
-        //Hacerle que cargue solo
-
-        }
-
-
-    )
+    useEffect(() => {
+        
+    fetchPosts();  
+    
+    },[]);
 
     return (
         <>
@@ -36,13 +34,6 @@ function Posts() {
                 <Typography variant="h4" gutterBottom>
                     Posts
                 </Typography>
-
-                <Button variant="contained"
-                        color="primary"
-                        onClick={fetchPosts}
-                        disabled={loading}
-                >{loading ? "Cargando ....." : "Cargar Posts"}
-                </Button>
 
                 <Table sx={{mt: 2}}>
                     <TableHead>
