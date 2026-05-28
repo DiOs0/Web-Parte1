@@ -2,9 +2,9 @@
 
 
 
-export interface Post{
+export interface ToDo{
     userId:number;
     id: number;
     title: string;
-    body: string;
+    completed: boolean;
 }

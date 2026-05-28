@@ -3,6 +3,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import HelpIcon from "@mui/icons-material/Help";
 import MdPhone from '@mui/icons-material/Phone';
 import {Link} from "react-router-dom";
+import PeopleIcon from '@mui/icons-material/People';
 
 function NavBar() {
 
@@ -17,6 +18,7 @@ function NavBar() {
                     <Button color="inherit" component={Link} to="/" startIcon={<HomeIcon/>}>Inicio</Button>
                     <Button color="inherit" component={Link} to="/about" startIcon={<HelpIcon/>}>Acerca de</Button>
                     <Button color="inherit" component={Link} to="/posts" startIcon={<MdPhone/>}>Posts</Button>
+                    <Button color="inherit" component={Link} to="/users" startIcon={<PeopleIcon />}>Usuarios</Button>
                 </Toolbar>
             </AppBar>
         </>
