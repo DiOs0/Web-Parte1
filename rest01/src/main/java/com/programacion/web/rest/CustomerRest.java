@@ -10,8 +10,8 @@ import java.util.Map;
 
 @Path("/customers")
 //Lo mas simple es anotarle a la clase de tipo JSON
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
+@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 public class CustomerRest {
 
     private static Map<Integer, Customer> customer = Map.of(

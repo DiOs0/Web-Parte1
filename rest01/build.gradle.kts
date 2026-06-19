@@ -13,8 +13,11 @@ repositories {
 dependencies {
     implementation("org.jboss.resteasy:resteasy-core:7.0.2.Final")
     implementation("org.jboss.resteasy:resteasy-undertow:7.0.2.Final")
+    // Esto es para json
     implementation("org.jboss.resteasy:resteasy-json-binding-provider:7.0.2.Final")
-    // Esto es para xml     implementation("org.jboss.resteasy:resteasy-json-binding-provider:7.0.2.Final")
+
+    // Esto es para xml
+    implementation("org.jboss.resteasy:resteasy-jaxb-provider:7.0.2.Final")
 }
 
 tasks.test {
