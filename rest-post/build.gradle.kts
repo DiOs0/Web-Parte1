@@ -25,8 +25,25 @@ dependencies {
     //Componentes JPA
     implementation("org.hibernate.orm:hibernate-core:7.4.1.Final")
     implementation("org.postgresql:postgresql:42.7.11")
+    implementation("org.apache.deltaspike.modules:deltaspike-data-module-api:2.0.1")
+    implementation("org.apache.deltaspike.modules:deltaspike-data-module-impl:2.0.1")
 
 
+
+}
+
+
+tasks.withType<JavaCompile> {
+    options.release.set(21)
+}
+
+sourceSets{
+    main{
+        output.setResourcesDir(
+            file("${buildDir}classes/java/main")
+
+        )
+    }
 }
 
 tasks.test {

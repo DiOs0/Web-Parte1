@@ -1,31 +1,21 @@
-package com.programacion.web.dtos;
+package com.programacion.web.db;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "users")
-@Data
+@Getter @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class User {
 
     @Id // Llave primaria
     private Integer id;
 
-    @Column
     private String name;
-
-    @Column
-    private String username;
-
-    @Column
-    private String email;
 }
