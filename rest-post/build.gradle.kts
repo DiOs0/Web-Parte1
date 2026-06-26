@@ -40,7 +40,7 @@ tasks.withType<JavaCompile> {
 sourceSets{
     main{
         output.setResourcesDir(
-            file("${buildDir}classes/java/main")
+            file("${buildDir}/classes/java/main")
 
         )
     }

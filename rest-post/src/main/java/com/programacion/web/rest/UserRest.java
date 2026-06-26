@@ -43,6 +43,7 @@ public class UserRest {
     }
 
     @PUT
+    @PathParam("/{id}")
     public void update (@PathParam("id")Integer id,User user){
         userRepository.findOptionalBy(id).ifPresent(existingUser->{
             userRepository.save(user);
