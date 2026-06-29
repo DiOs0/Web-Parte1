@@ -4,19 +4,21 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "users")
-@Getter @Setter
-@Builder
+@Table(name = "albums")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-public class User {
+@ToString(exclude = "user")
+public class Album {
 
     @Id // Llave primaria
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Integer id;
 
-    private String name;
-    private String username;
-    private String email;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    private String title;
+
 }
