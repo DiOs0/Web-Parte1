@@ -1,13 +1,12 @@
 package com.programacion.web.rest;
 
 import com.programacion.web.db.User;
-import com.programacion.web.repositorios.UserRepository;
+import com.programacion.web.servicios.impl.UserServiceImpl;
+import com.programacion.web.servicios.interfaces.UserService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.Delegate;
 
 import java.util.List;
 
@@ -16,37 +15,40 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class UserRest {
 
-    final UserRepository userRepository;
+    final UserServiceImpl userServiceImpl;
 
     @Inject
-    public UserRest(UserRepository userRepository){
-        this.userRepository=userRepository;
+    public UserRest(UserServiceImpl userServiceImpl){
+        this.userServiceImpl=userServiceImpl;
     }
 
     @GET
     public List<User> findAll(){
-        return userRepository.findAll();
+        return userServiceImpl.findAll();
     }
 
     @GET
     @Path("/{id}")
     public Response findById(@PathParam("id")Integer id){
-        return userRepository.findOptionalBy(id)
+        return userServiceImpl.findById(id)
                 .map(Response::ok)
                 .orElse(Response.status(Response.Status.NOT_FOUND))
                 .build();
     }
 
     @POST
-    public void save (User user){
-        //userRepository.save(user);
+    public Response save (User user){
+        userServiceImpl.save(user);
+        return Response
+                .status(Response.Status.CREATED)
+                .build();
     }
 
     @PUT
-    @PathParam("/{id}")
+    @Path("/{id}")
     public void update (@PathParam("id")Integer id,User user){
-        userRepository.findOptionalBy(id).ifPresent(existingUser->{
-            userRepository.save(user);
+        userServiceImpl.findById(id).ifPresent(existingUser->{
+            userServiceImpl.save(user);
         });
 
     }
@@ -54,9 +56,8 @@ public class UserRest {
     @DELETE
     @Path("/{id}")
     public void delete (@PathParam("id")Integer id){
-        userRepository.findOptionalBy(id).ifPresent(userRepository::remove);
-
-
+        userServiceImpl.findById(id)
+                .ifPresent(userServiceImpl::remove);
     }
 
 }

@@ -23,12 +23,14 @@ public class JpaConfig {
     }
 
     @Produces
+    @ApplicationScoped
     public EntityManagerFactory emf() {
         return emf;
     }
 
 
     @Produces
+    @ApplicationScoped
     public EntityManager entityManager() {
         return emf.createEntityManager();
     }

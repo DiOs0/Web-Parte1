@@ -2,12 +2,7 @@ package com.programacion.web;
 
 
 
-
-import com.programacion.web.repositorios.UserRepository;
-import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.ws.rs.SeBootstrap;
-import jakarta.ws.rs.core.Application;
-
 import java.net.URI;
 
 public class RestPostMain {

@@ -1,6 +1,7 @@
 package com.programacion.web;
 
 import com.programacion.web.rest.AlbumRest;
+import com.programacion.web.rest.TodoRest;
 import com.programacion.web.rest.UserRest;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
@@ -15,7 +16,8 @@ public class MyApplication extends Application {
         return Set.of(
             //Meter las clases
                 UserRest.class,
-                AlbumRest.class
+                AlbumRest.class,
+                TodoRest.class
         );
     }
 }

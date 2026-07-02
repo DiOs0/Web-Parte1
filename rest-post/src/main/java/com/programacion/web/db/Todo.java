@@ -1,7 +1,5 @@
 package com.programacion.web.db;
 
-
-import com.programacion.web.db.User;
 import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,24 +7,25 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name = "albums")
-@Getter
-@Setter
+@Table(name = "todos")
+@Getter @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = "user")
-public class Album {
+public class Todo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Integer id;
+
+    private String title;
+
+    private boolean completed;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonbTransient
     private User user;
-
-    private String title;
 }

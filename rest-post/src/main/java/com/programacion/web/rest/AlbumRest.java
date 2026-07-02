@@ -2,9 +2,8 @@ package com.programacion.web.rest;
 
 
 import com.programacion.web.db.Album;
-import com.programacion.web.db.User;
-import com.programacion.web.repositorios.AlbumRepository;
-import com.programacion.web.repositorios.UserRepository;
+import com.programacion.web.servicios.impl.AlbumServiceImpl;
+import com.programacion.web.servicios.interfaces.AlbumService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -17,37 +16,40 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class AlbumRest {
 
-    final AlbumRepository albumRepository;
+    final AlbumServiceImpl albumServiceImpl;
 
     @Inject
-    public AlbumRest(AlbumRepository albumRepository){
-        this.albumRepository=albumRepository;
+    public AlbumRest(AlbumServiceImpl albumServiceImpl){
+        this.albumServiceImpl=albumServiceImpl;
     }
 
     @GET
     public List<Album> findAll(){
-        return albumRepository.findAll();
+        return albumServiceImpl.findAll();
     }
 
     @GET
     @Path("/{id}")
     public Response findById(@PathParam("id")Integer id){
-        return albumRepository.findOptionalBy(id)
+        return albumServiceImpl.findById(id)
                 .map(Response::ok)
                 .orElse(Response.status(Response.Status.NOT_FOUND))
                 .build();
     }
 
     @POST
-    public void save (Album album){
-        //userRepository.save(user);
+    public Response save (Album album){
+        albumServiceImpl.save(album);
+        return Response
+                .status(Response.Status.CREATED)
+                .build();
     }
 
     @PUT
-    @PathParam("/{id}")
+    @Path("/{id}")
     public void update (@PathParam("id")Integer id,Album album){
-        albumRepository.findOptionalBy(id).ifPresent(existingUser->{
-            albumRepository.save(album);
+        albumServiceImpl.findById(id).ifPresent(existingAlbum->{
+            albumServiceImpl.save(album);
         });
 
     }
@@ -55,9 +57,8 @@ public class AlbumRest {
     @DELETE
     @Path("/{id}")
     public void delete (@PathParam("id")Integer id){
-        albumRepository.findOptionalBy(id).ifPresent(albumRepository::remove);
-
-
+        albumServiceImpl.findById(id)
+                .ifPresent(albumServiceImpl::remove);
     }
 
 }
