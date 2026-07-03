@@ -11,12 +11,15 @@
         <class>com.programacion.web.db.User</class>
         <class>com.programacion.web.db.Album</class>
         <class>com.programacion.web.db.Todo</class>
+        <class>com.programacion.web.db.Photo</class>
+        <class>com.programacion.web.db.Post</class>
+        <class>com.programacion.web.db.Comment</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/rest01" />
             <property name="jakarta.persistence.jdbc.user" value="postgres" />
-            <property name="jakarta.persistence.jdbc.password" value="labcom,2015" />
+            <property name="jakarta.persistence.jdbc.password" value="root" />
             <property name="hibernate.show_sql" value="true"/>
 
 <!--        <property name="jakarta.persistence.sql-load-script-source" value="import.sql"/>-->

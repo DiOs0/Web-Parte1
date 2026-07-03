@@ -14,7 +14,7 @@ public class ClienteRestMain {
 
     public static final String USERS_URL="http://localhost:8080/api/users";
 
-    static void main() {
+    public static void main(String[] args) {
 
         try(var client= ClientBuilder.newClient()){
 
@@ -30,11 +30,11 @@ public class ClienteRestMain {
 
 
             //All users
-            List<UserDto> users= client.target(USERS_URL)
-                    .request(MediaType.APPLICATION_JSON)
-                    .get(new GenericType<>(){});
-
-            System.out.println(users);
+//            List<UserDto> users= client.target(USERS_URL)
+//                    .request(MediaType.APPLICATION_JSON)
+//                    .get(new GenericType<>(){});
+//
+//            System.out.println(users);
 
             //-----------
 
@@ -72,16 +72,40 @@ public class ClienteRestMain {
 
             //------PUT
 
+            String userId = "1";
+
+            UserDto userToUpdate = client.target(USERS_URL)
+                    .path(userId)
+                    .request(MediaType.APPLICATION_JSON)
+                    .get(UserDto.class);
+
+            userToUpdate.setName("John Doe Actualizado");
+            userToUpdate.setEmail("john.doe.new@example.com");
+
+            var responsePut = client.target(USERS_URL)
+                    .path(userId)
+                    .request(MediaType.APPLICATION_JSON)
+                    .put(Entity.entity(userToUpdate, MediaType.APPLICATION_JSON));
+
+            System.out.println("Status PUT: " + responsePut.getStatus());
 
 
             //----------
 
             //------DELETE
+            String userId2 = "19";
+            var responseDelete = client.target(USERS_URL)
+                    .path(userId2)
+                    .request(MediaType.APPLICATION_JSON)
+                    .delete();
 
+            System.out.println("Status DELETE: " + responseDelete.getStatus());
 
 
             //----------
 
+        }catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
