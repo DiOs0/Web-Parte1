@@ -11,7 +11,7 @@ function PostDetalle() {
 
 
     const {id} = useParams<{ id: string }>();
-    const [post, setPost] = useState<Post>({id: 0, title: "", body: ""});
+    const [post, setPost] = useState<Post>({id: 0,userId: 0, title: "", body: ""});
 
 
     useEffect(() => {
@@ -74,7 +74,7 @@ function PostDetalle() {
                             multiline
                             rows={4}
                             //Esto hace lo mismo PERO mas largo y tedioso
-                            onChange={e => setPost({id: post.id, title: post.title, body: e.target.value})}
+                            onChange={e => setPost({id: post.id,userId: post.userId, title: post.title, body: e.target.value})}
                         />
 
                     </CardContent>

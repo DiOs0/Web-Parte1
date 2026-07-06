@@ -1,6 +1,8 @@
 plugins {
     id("java")
+    //id("application")
     id("io.freefair.lombok") version "9.5.0"
+    id("com.gradleup.shadow") version "9.3.0"
 }
 
 group = "com.programacion.taller3"
@@ -48,4 +50,13 @@ sourceSets{
 
 tasks.test {
     useJUnitPlatform()
+}
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "com.programacion.web.RestPostMain"
+    }
+}
+
+tasks.shadowJar {
+    mergeServiceFiles()
 }
