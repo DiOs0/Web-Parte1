@@ -31,10 +31,14 @@ dependencies {
     implementation("org.apache.deltaspike.modules:deltaspike-data-module-impl:2.0.1")
 
 
+    //Rest Client
+    //implementation("org.jboss.resteasy:resteasy-client:7.0.2.Final")
+
+
 
 }
 
-
+//Borrar
 tasks.withType<JavaCompile> {
     options.release.set(21)
 }
@@ -51,12 +55,15 @@ sourceSets{
 tasks.test {
     useJUnitPlatform()
 }
+
+//Borrar
 tasks.jar {
     manifest {
         attributes["Main-Class"] = "com.programacion.web.RestPostMain"
     }
 }
 
+//Borrar
 tasks.shadowJar {
     mergeServiceFiles()
 }

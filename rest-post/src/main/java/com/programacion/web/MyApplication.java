@@ -1,5 +1,6 @@
 package com.programacion.web;
 
+import com.programacion.web.config.CorsFilter;
 import com.programacion.web.rest.*;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
@@ -18,7 +19,8 @@ public class MyApplication extends Application {
                 TodoRest.class,
                 PhotoRest.class,
                 PostRest.class,
-                CommentRest.class
+                CommentRest.class,
+                CorsFilter.class
         );
     }
 }
